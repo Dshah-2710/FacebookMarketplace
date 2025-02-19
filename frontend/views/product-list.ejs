@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Listings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #B12704;
+    }
+    .rating {
+      color: #FFA41C;
+    }
+    .btn-add-cart {
+      background: #FFD814;
+      color: black;
+      font-weight: bold;
+    }
+    .btn-add-cart:hover {
+      background: #F7CA00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5"><!-- Floating Button -->
+<!-- Floating Add Button -->
+<a href="/add-products" class="btn btn-primary btn-lg position-fixed bottom-3 end-3 shadow" style="border-radius: 10px; padding: 10px 20px;">
+  Add Product
+</a>
+
+    <h1 class="text-center mb-4">Shop the Best Deals</h1>
+
+    <div class="row">
+      <% products.forEach(product => { %>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card product-card">
+            <img src="/images/<%= product.image.split('/').pop() %>" alt="<%= product.name %>" />
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="price">$<%= product.price.toFixed(2) %></p>
+              <p class="rating">⭐ <%= product.rating %> / 5</p>
+              <p class="small text-muted"><%= product.description %></p>
+              <a href="/cart/add/<%= product.id %>" class="btn btn-add-cart w-100">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+<!-- footer.ejs -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+      <div class="row">
+          <!-- About Us -->
+          <div class="col-lg-3 col-md-6 mb-3">
+              <h5>About Us</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Company Info</a></li>
+                  <li><a href="#" class="text-white">Careers</a></li>
+                  <li><a href="#" class="text-white">Press Releases</a></li>
+                  <li><a href="#" class="text-white">Investor Relations</a></li>
+              </ul>
+          </div>
+
+          <!-- Customer Service -->
+          <div class="col-lg-3 col-md-6 mb-3">
+              <h5>Customer Service</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Help Center</a></li>
+                  <li><a href="#" class="text-white">Returns & Refunds</a></li>
+                  <li><a href="#" class="text-white">Shipping Info</a></li>
+                  <li><a href="#" class="text-white">Order Tracking</a></li>
+              </ul>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-3 col-md-6 mb-3">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Your Account</a></li>
+                  <li><a href="#" class="text-white">Gift Cards</a></li>
+                  <li><a href="#" class="text-white">Affiliate Program</a></li>
+                  <li><a href="#" class="text-white">Terms & Conditions</a></li>
+              </ul>
+          </div>
+
+          <!-- Follow Us -->
+          <div class="col-lg-3 col-md-6 text-md-right text-center">
+              <h5>Follow Us</h5>
+              <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="row mt-4">
+          <div class="col-12 text-center">
+              <p class="mb-0">© 2025 The innovators. All rights reserved.</p>
+              <p><a href="#" class="text-white">Privacy Policy</a> | <a href="#" class="text-white">Terms of Service</a></p>
+          </div>
+      </div>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

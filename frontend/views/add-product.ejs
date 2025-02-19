@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Add Product</h2>
+    <form action="/add-product" method="POST" enctype="multipart/form-data">
+        
+        <!-- Image Upload (Dropdown for Image) -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Product Image</label>
+            <input type="file" name="image" class="form-control" required>
+        </div>
+
+        <!-- Title -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+
+        <!-- Category Dropdown -->
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select name="category" class="form-control" required>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home</option>
+                <option value="books">Books</option>
+                <option value="sports">Sports</option>
+            </select>
+        </div>
+
+        <!-- Condition Checkboxes -->
+        <div class="mb-3">
+            <label class="form-label">Condition</label><br>
+            <input type="checkbox" name="condition[]" value="Used"> Used
+            <input type="checkbox" name="condition[]" value="Not Used"> Not Used
+            <input type="checkbox" name="condition[]" value="Refurbished"> Refurbished
+            <input type="checkbox" name="condition[]" value="Open Box"> Open Box
+        </div>
+
+        <!-- Short Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Short Description</label>
+            <textarea name="description" class="form-control" required></textarea>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+            <label for="price" class="form-label">Price ($)</label>
+            <input type="number" name="price" class="form-control" step="0.01" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+</body>
+</html>

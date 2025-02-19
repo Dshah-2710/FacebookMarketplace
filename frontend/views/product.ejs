@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Products</h2>
+    <div class="row">
+        <% products.forEach(product => { %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <!-- Display image from database with the unique path stored -->
+                    <img src="<%= product.image %>" alt="<%= product.title %>" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.title %></h5>
+                        <p class="price">$<%= product.price.toFixed(2) %></p>
+                        <p class="rating">⭐ <%= product.rating %> / 5</p>
+                        <p class="small text-muted"><%= product.description %></p>
+                        <a href="/cart/add/<%= product._id %>" class="btn btn-add-cart w-100">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+</body>
+</html>
